@@ -14,7 +14,7 @@ const loggedOutView = document.getElementById("logged-out-view");
 const loggedInView = document.getElementById("logged-in-view");
 const userNameSpan = document.getElementById("user-name");
 
-// Google Login လုပ်ရန်
+// Google Login (Popup နည်းလမ်းဖြင့် ဝင်ရန်)
 loginBtn.addEventListener("click", () => {
     signInWithPopup(auth, provider)
         .then((result) => {
