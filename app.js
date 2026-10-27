@@ -14,36 +14,38 @@ const loggedOutView = document.getElementById("logged-out-view");
 const loggedInView = document.getElementById("logged-in-view");
 const userNameSpan = document.getElementById("user-name");
 
-// Google Login (Popup နည်းလမ်းဖြင့် ဝင်ရန်)
-loginBtn.addEventListener("click", () => {
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            console.log("Logged in user:", result.user.displayName);
-        })
-        .catch((error) => {
-            console.error("Login Error:", error);
-            alert("Login failed: " + error.message);
-        });
-});
-
-// Logout လုပ်ရန်
-logoutBtn.addEventListener("click", () => {
-    signOut(auth).then(() => {
-        console.log("Logged out successfully");
-    }).catch((error) => {
-        console.error("Logout Error:", error);
+if (loginBtn) {
+    loginBtn.addEventListener("click", () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log("Login Successful:", result.user.displayName);
+            })
+            .catch((error) => {
+                console.error("Login Error Code:", error.code);
+                console.error("Login Error Message:", error.message);
+                alert("Login failed: " + error.message);
+            });
     });
-});
+}
 
-// အကောင့်ဝင်/ထွက် အခြေအနေကို စောင့်ကြည့်ရန်
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        signOut(auth).then(() => {
+            console.log("Logged out successfully");
+        }).catch((error) => {
+            console.error("Logout Error:", error);
+        });
+    });
+}
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        loggedOutView.style.display = "none";
-        loggedInView.style.display = "block";
-        userNameSpan.textContent = user.displayName;
+        if (loggedOutView) loggedOutView.style.display = "none";
+        if (loggedInView) loggedInView.style.display = "block";
+        if (userNameSpan) userNameSpan.textContent = user.displayName;
     } else {
-        loggedOutView.style.display = "block";
-        loggedInView.style.display = "none";
-        userNameSpan.textContent = "";
+        if (loggedOutView) loggedOutView.style.display = "block";
+        if (loggedInView) loggedInView.style.display = "none";
+        if (userNameSpan) userNameSpan.textContent = "";
     }
 });
