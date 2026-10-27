@@ -1,7 +1,7 @@
 import { auth } from "./firebase-config.js";
 import { 
     GoogleAuthProvider, 
-    signInWithPopup, 
+    signInWithRedirect, 
     signOut, 
     onAuthStateChanged 
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
@@ -16,25 +16,13 @@ const userNameSpan = document.getElementById("user-name");
 
 if (loginBtn) {
     loginBtn.addEventListener("click", () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                console.log("Login Successful:", result.user.displayName);
-            })
-            .catch((error) => {
-                console.error("Login Error Code:", error.code);
-                console.error("Login Error Message:", error.message);
-                alert("Login failed: " + error.message);
-            });
+        signInWithRedirect(auth, provider);
     });
 }
 
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-        signOut(auth).then(() => {
-            console.log("Logged out successfully");
-        }).catch((error) => {
-            console.error("Logout Error:", error);
-        });
+        signOut(auth);
     });
 }
 
