@@ -8,10 +8,22 @@
 </head>
 <body>
     <div id="app">
-        <h1>AOK Steel Pioneers LMS</h1>
-        <p>Welcome to the learning management system for steel engineering.</p>
+        <header>
+            <h1>AOK Steel Pioneers LMS</h1>
+            <p>Steel Engineering Learning Management System</p>
+        </header>
+
+        <section id="auth-section">
+            <div id="logged-out-view">
+                <button id="google-login-btn" class="btn">Sign in with Google</button>
+            </div>
+            <div id="logged-in-view" style="display: none;">
+                <p>Welcome, <span id="user-name"></span>!</p>
+                <button id="logout-btn" class="btn-danger">Sign Out</button>
+            </div>
+        </section>
     </div>
-    <script type="module" src="firebase-config.js"></script>
-    <script src="app.js"></script>
+
+    <script type="module" src="app.js"></script>
 </body>
 </html>
