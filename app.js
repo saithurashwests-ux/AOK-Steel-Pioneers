@@ -19,9 +19,18 @@ const userNameSpan = document.getElementById("user-name");
 // Login ဝင်ရန်
 if (loginBtn) {
     loginBtn.addEventListener("click", () => {
-        const email = emailInput.value;
-        const password = passwordInput.value;
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        
+        if(!email || !password) {
+            alert("ကျေးဇူးပြု၍ Email နှင့် Password ထည့်ပါ။");
+            return;
+        }
+
         signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                console.log("Logged in:", userCredential.user);
+            })
             .catch((error) => {
                 alert("Login Error: " + error.message);
             });
@@ -31,10 +40,16 @@ if (loginBtn) {
 // အကောင့်အသစ်လုပ်ရန် (Sign Up)
 if (signupBtn) {
     signupBtn.addEventListener("click", () => {
-        const email = emailInput.value;
-        const password = passwordInput.value;
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        
+        if(!email || !password) {
+            alert("ကျေးဇူးပြု၍ Email နှင့် Password ထည့်ပါ။");
+            return;
+        }
+
         createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
+            .then((userCredential) => {
                 alert("အကောင့်ဖွင့်ခြင်း အောင်မြင်ပါသည်။");
             })
             .catch((error) => {
