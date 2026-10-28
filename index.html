@@ -1,46 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AOK Steel Pioneers LMS</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="app">
-        <header>
-            <h1>AOK Steel Pioneers LMS</h1>
-            <p>Steel Engineering Learning Management System</p>
-        </header>
-
-        <section id="auth-section">
-            <div id="<div id="logged-out-view">
+<!-- Login မလုပ်ရသေးချိန်တွင် ပေါ်မည့် နေရာ -->
+<div id="logged-out-view" style="text-align: center; padding: 20px;">
     <h2>AOK Steel Pioneers LMS</h2>
     <p>Steel Engineering Learning Management System</p>
     
-    <!-- Email & Password Form -->
     <div style="margin-top: 20px;">
         <input type="email" id="email-input" placeholder="Email ထည့်ပါ" style="padding: 10px; margin-bottom: 10px; width: 80%; display: block; margin-left: auto; margin-right: auto;"><br>
         <input type="password" id="password-input" placeholder="Password ထည့်ပါ" style="padding: 10px; margin-bottom: 10px; width: 80%; display: block; margin-left: auto; margin-right: auto;"><br>
-        <button id="login-btn" style="padding: 10px 20px; background-color: #003366; color: white; border: none; border-radius: 5px;">Login ဝင်ရန်</button>
-        <button id="signup-btn" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; margin-left: 10px;">အကောင့်အသစ်ပြုလုပ်ရန်</button>
+        <button id="login-btn" style="padding: 10px 20px; background-color: #003366; color: white; border: none; border-radius: 5px; cursor: pointer;">Login ဝင်ရန်</button>
+        <button id="signup-btn" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; margin-left: 10px; cursor: pointer;">အကောင့်အသစ်ပြုလုပ်ရန်</button>
     </div>
 </div>
 
-<div id="logged-in-view" style="display: none;">
-    <h2>ကြိုဆိုပါတယ်, <span id="user-name"></span>!</h2>
-    <button id="logout-btn" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px;">Log out ထွက်ရန်</button>
+<!-- Login ဝင်ပြီးချိန်မှ ပေါ်မည့် နေရာ (မူလက ပိတ်ထားမည်) -->
+<div id="logged-in-view" style="display: none; text-align: center; padding: 20px;">
+    <h2>ကြိုဆိုပါတယ်, <span id="user-name"></span></h2>
+    <button id="logout-btn" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Log out ထွက်ရန်</button>
 </div>
-">
-                <button id="google-login-btn" class="btn">Sign in with Google</button>
-            </div>
-            <div id="logged-in-view" style="display: none;">
-                <p>Welcome, <span id="user-name"></span>!</p>
-                <button id="logout-btn" class="btn-danger">Sign Out</button>
-            </div>
-        </section>
-    </div>
-
-    <script type="module" src="app.js"></script>
-</body>
-</html>
